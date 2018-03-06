@@ -17,6 +17,8 @@ int ft_strlen(char *s1);
 void *ft_memcpy(char *s1, char *s2, size_t n);
 char *ft_strdup(char *s1);
 void *ft_memset(void *b, int c, size_t len);
+int  ft_icmp(int a, int b);
+void  ft_putchar(char c);
 
 
 void	test_isalpha()
@@ -51,6 +53,7 @@ void	test_toupper()
 	}
 	if (!err)
 		printf("\033[92m ft_toupper is ok \033[0m\n");
+	printf("coucou");
 }
 
 void	test_tolower()
@@ -138,21 +141,6 @@ void	test_isprint()
 		printf("\033[92m ft_isprint is ok \033[0m\n");
 }
 
-void test_bzero (void)
-{
-	char str[4] = "jui";
-
-	printf("str[0] = %d\n", str[0]);
-	printf("str[1] = %d\n", str[1]);
-	printf("str[2] = %d\n", str[2]);
-
-	ft_bzero(str, 3);
-	if (str[0] == 0 && str[1] == 0 && str[2] == 0 )
-		printf("\033[92m ft_bzero is ok \033[0m\n");
-	else
-		printf("\033[31merror on ft_bzero\033[0m\n");
-}
-
 void test_memcpy (void)
 {
 	char	memc1[10]	= "123456789";
@@ -165,7 +153,24 @@ void test_memcpy (void)
 		printf("\033[31merror on ft_memcpy\033[0m\n");
 }
 
+void test_icmp(void)
+{
+	if (ft_icmp(7, 5) == 2)
+		printf("\033[92m ft_icmp is ok\033[0m\n");
+	else
+		printf("\033[31merror on ft_icmp\033[0m\n");
+}
+
+void test_ft_putchar(void)
+{
+	char str[] = "\033[92m ft_putchar is ok \033[0m\n";
+	int i = -1;
+	while (++i < strlen(str))
+		ft_putchar(str[i]);
+}
+
 int	main(void){
+	test_ft_putchar();
 	test_isalpha();
 	test_toupper();
 	test_tolower();
@@ -174,6 +179,6 @@ int	main(void){
 	test_isalnum();
 	test_isprint();
 	test_memcpy();
-	// test_bzero();
+	test_icmp();
 	return 0;
 }

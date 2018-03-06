@@ -14,6 +14,8 @@ SRC += ft_memcpy.s
 SRC += ft_memset.s
 SRC += ft_strdup.s
 SRC += ft_cat.s
+SRC += ft_icmp.s
+SRC += ft_putchar.s
 	
 OBJ = $(SRC:.s=.o)
 FLAG = -Wall -Werror -Wextra
@@ -44,14 +46,14 @@ start:
 	@echo "\033[K$(CY)[LIBFTASM] :$(CE) $(CG)Compiling $<$(CE) \033[1A";
 	@nasm -f macho64 $< -o $@ ;
 
-test: $(OBJ)
-	@make
+test: $(NAME) main.c
 	@echo "\033[K$(CY)[LIBFTASM] :$(CE) $(CG)Compiling test \033[1A";
-	@gcc main.c $(OBJ)
+	@gcc -c main.c 
+	@gcc -o test main.o libfts.a
 
 clean: start
 	@echo "\033[K$(CY)[LIBFTASM] :$(CE) $(CG)Cleaning Libftasm objects$(CE)\033[1A";
-	@/bin/rm -rf $(OBJ);
+	@/bin/rm -rf $(OBJ) main.o;
 
 fclean: clean
 	@echo "\033[K$(CY)[LIBFTASM] :$(CE) $(CG)Cleaning Libftasm ...$(CE)\033[1A";
