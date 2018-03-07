@@ -5,7 +5,7 @@ section .text
 _ft_islower:
 	cmp rdi, 97
 	js no
-	cmp rdi, 122
+	cmp rdi, 123
 	js yes
 
 no:

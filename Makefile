@@ -18,6 +18,7 @@ SRC += ft_icmp.s
 SRC += ft_putchar.s
 SRC += ft_isupper.s
 SRC += ft_islower.s
+SRC += ft_putchar_fd.s
 	
 OBJ = $(SRC:.s=.o)
 FLAG = -Wall -Werror -Wextra

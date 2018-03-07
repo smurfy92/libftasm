@@ -19,6 +19,7 @@ char *ft_strdup(char *s1);
 void *ft_memset(void *b, int c, size_t len);
 int  ft_icmp(int a, int b);
 void  ft_putchar(char c);
+void  ft_putchar_fd(char c, int fd);
 int ft_isupper(char c);
 int ft_islower(char c);
 
@@ -194,7 +195,7 @@ void test_ft_islower(void)
 
 	while (++i < 128)
 	{
-		if ((i < 97 && ft_islower(i) == 1) || (i > 122 && ft_islower(i) == 1) || (i <= 97 && i >= 122 && ft_islower(i) == 0))
+		if (ft_islower(i) != islower(i))
 		{
 			printf("\033[31merror on ft_islower at char -> %c\033[0m\n", i);
 			err = 1;
@@ -227,6 +228,37 @@ void test_ft_bzero(void)
 
 }
 
+void	test_ft_memset(void)
+{
+	char *str = strdup("totowefewefwe");
+	char *str2 = strdup("totowefewefwe");
+	int len = ft_strlen("totowefewefwe");
+
+	memset(str, 'c', 4);
+	ft_memset(str2, 'c', 4);
+
+	if (strcmp(str, str2) != 0)
+		printf("\033[31merror on ft_memset at str -> %s str2->  %s\033[0m\n",str, str2);
+	else
+		printf("\033[92m ft_memset is ok \033[0m\n");
+}
+
+void	test_ft_strdup(void)
+{
+	char *str = strdup("toto\n");
+	char *str2 = ft_strdup("toto\n");
+
+	if (strcmp(str, str2) != 0)
+		printf("\033[31merror on ft_strdup at str -> %s str2->  %s\033[0m\n",str, str2);
+	else
+		printf("\033[92m ft_strdup is ok \033[0m\n");
+}
+
+void	test_ft_putchar_fd(void)
+{
+	ft_putchar_fd('c', 2);
+}
+
 int	main(void){
 	test_ft_putchar();
 	test_isalpha();
@@ -241,5 +273,8 @@ int	main(void){
 	test_ft_isupper();
 	test_ft_islower();
 	test_ft_bzero();
+	test_ft_memset();
+	test_ft_strdup();
+	test_ft_putchar_fd();
 	return 0;
 }
