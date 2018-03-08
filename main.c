@@ -209,7 +209,7 @@ void test_ft_bzero(void)
 {
 	char *str = strdup("totowefewefwe");
 	char *str2 = strdup("totowefewefwe");
-	int len = ft_strlen("totowefewefwe");
+	int len = strlen("totowefewefwe");
 	int i = -1;;
 	int err = 0;
 
@@ -232,7 +232,7 @@ void	test_ft_memset(void)
 {
 	char *str = strdup("totowefewefwe");
 	char *str2 = strdup("totowefewefwe");
-	int len = ft_strlen("totowefewefwe");
+	int len = strlen("totowefewefwe");
 
 	memset(str, 'c', 4);
 	ft_memset(str2, 'c', 4);
@@ -259,6 +259,20 @@ void	test_ft_putchar_fd(void)
 	ft_putchar_fd('c', 2);
 }
 
+void	test_ft_strlen(void)
+{
+	printf("strlen -> %lu\n", strlen("42"));
+	printf("ft_strlen -> %d\n", ft_strlen("42"));
+}
+
+void test_ft_strcat(void)
+{
+	char *str = strdup("toto");
+	char *str2 = strdup("titi");
+	printf("strcat -> %s\n",strcat(str, str2));
+	printf("ft_strcat -> %s\n",ft_strcat("toto", "titi"));
+}
+
 int	main(void){
 	test_ft_putchar();
 	test_isalpha();
@@ -276,5 +290,7 @@ int	main(void){
 	test_ft_memset();
 	test_ft_strdup();
 	test_ft_putchar_fd();
+	test_ft_strlen();
+	test_ft_strcat();
 	return 0;
 }
