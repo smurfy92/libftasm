@@ -8,7 +8,7 @@ _ft_bzero:
 	mov r10, rsi
 	cmp r9, r10
 	js loop
-	ret 
+	ret
 
 loop:
 	mov r8b , 0
@@ -16,3 +16,4 @@ loop:
 	add r9 , 1
 	cmp r9, r10
 	js loop
+	ret

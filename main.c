@@ -223,6 +223,7 @@ void test_ft_bzero(void)
 			err = 1;
 		}
 	}
+
 	if (!err)
 		printf("\033[92m ft_bzero is ok \033[0m\n");
 
@@ -256,21 +257,35 @@ void	test_ft_strdup(void)
 
 void	test_ft_putchar_fd(void)
 {
-	ft_putchar_fd('c', 2);
+	ft_putchar_fd('2', 2);
+	ft_putchar_fd('\n', 2);
 }
 
 void	test_ft_strlen(void)
 {
-	printf("strlen -> %lu\n", strlen("42"));
-	printf("ft_strlen -> %d\n", ft_strlen("42"));
+	int a = strlen("42");
+	int b = ft_strlen("42");
+	if (a != b)
+		printf("\033[31merror on ft_strlen\n");
+	else
+		printf("\033[92m ft_strlen is ok \033[0m\n");
 }
 
 void test_ft_strcat(void)
 {
-	char *str = strdup("toto");
-	char *str2 = strdup("titi");
-	printf("strcat -> %s\n",strcat(str, str2));
-	printf("ft_strcat -> %s\n",ft_strcat("toto", "titi"));
+	char *str = strdup("coucou");
+	char *str2 = strdup("fewfw");
+	char *str3 = strdup("coucou");
+	char *str4 = strdup("fewfw");
+	int e = 0;
+	int len = -1;
+
+	str = strcat(str, str2);
+	str3 = ft_strcat(str3, str4);
+	if (strcmp(str3, str) != 0)
+		printf("\033[31merror on ft_strcat\n");
+	else
+		printf("\033[92m ft_strcat is ok \033[0m\n");
 }
 
 int	main(void){

@@ -52,7 +52,7 @@ start:
 test: $(NAME) main.c
 	@echo "\033[K$(CY)[LIBFTASM] :$(CE) $(CG)Compiling test \033[1A";
 	@gcc -c main.c 
-	@gcc -o test main.o libfts.a
+	@gcc -o test main.o libfts.a $(FLAG)
 
 clean: start
 	@echo "\033[K$(CY)[LIBFTASM] :$(CE) $(CG)Cleaning Libftasm objects$(CE)\033[1A";
